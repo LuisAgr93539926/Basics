@@ -10,13 +10,20 @@ guess: str = ''  # guessed letters
 tries: int = 4  # amount of tries before losing
 
 while True:
+    blank_spots: int = 0
+
     for char in word:
         if char in guess:
             print(char, end='')
         else:
             print('_', end='')
+            blank_spots += 1
 
     print()  # newline
+
+    if blank_spots == 0:
+        print("You won!")
+        break
 
     guess += input('Guess a letter ->')  # user input
 
@@ -26,10 +33,5 @@ while True:
         tries -= 1
         print(f'Wrong! {tries} tries left...')
 
-    if word == guess:
-        print("You won!")
-
     if tries == 0:
         break
-
-    
