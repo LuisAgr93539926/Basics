@@ -1,33 +1,35 @@
 from random import choice
 
-# Generating random word
-word_bank: list = ['banana', 'apple', 'marshmallow']
+# 1. word bank
+word_bank: list[str] = ['banana', 'apple']
 word: str = choice(word_bank)
 
-# Starting game
-print("Welcome to Hangman!")
-guessed: str = ''
-tries: int = 4
+print('Welcome to hangman!')
 
-while tries > 0:
-    blank: int = 0
+guess: str = ''  # guessed letters
+tries: int = 4  # amount of tries before losing
 
+while True:
     for char in word:
-        if char in guessed:
+        if char in guess:
             print(char, end='')
         else:
             print('_', end='')
-            blank+=1
 
-    print()  # print new line
-    if blank == 0:
-        print("You won!")
-        break
-    elif blank == len(word):
-        guessed += input("Guess a letter: ")
+    print()  # newline
 
+    guess += input('Guess a letter ->')  # user input
+
+    if guess in word:
+        print('Good job!')
     else:
-        print("idk")
+        tries -= 1
+        print(f'Wrong! {tries} tries left...')
+
+    if word == guess:
+        print("You won!")
+
+    if tries == 0:
         break
 
-        # TODO FINISH
+    
