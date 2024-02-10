@@ -1,6 +1,6 @@
 import secrets  # not random because it can be reverse engineered
 import string  # library that categorizes every character in a string (digits, ASCII, hex, punctuation, etc)
-import enum
+
 
 def has_symbols(password: str) -> bool:
     for char in password:
@@ -16,7 +16,7 @@ def has_upper(password: str) -> bool:
     return False
 
 
-def generate_password(length:int, symbols: bool, upper_case: False):
+def generate_password(length: int, symbols: bool, upper_case: False):
     combination: str = string.ascii_lowercase + string.digits
 
     if symbols:
@@ -42,6 +42,6 @@ if __name__ == '__main__':
         new_password = generate_password(3, True, True)
         # new_password = generate_password(3, False, False)
         # new_password = "arsi,otn"
-        description: str = f'length: {len(new_password)}, has_symbols: {has_symbols(new_password)}, upper_casing: {has_upper(new_password)}'
+        description: str = (f'length: {len(new_password)}, has_symbols: {has_symbols(new_password)}, '
+                            f'upper_casing: {has_upper(new_password)}')
         print(f'{i} -> {new_password} | {description}')
-
