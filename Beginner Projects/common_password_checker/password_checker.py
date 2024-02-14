@@ -2,9 +2,9 @@ def check_password(user_password: str):
     with open('10-million-password-list-top-100000.txt', 'r') as file:
         common_passwords: list[str] = file.read().splitlines()
 
-    for i, common_passwords in enumerate(common_passwords, start=1):
-        if user_password == common_passwords:
-            print(f'{user_password}    ⚠️⚠️ Common Password (#{i}) ⚠️⚠️')
+    for i, password in enumerate(common_passwords, start=1):
+        if user_password == password:
+            print(f'{password}    ⚠️⚠️ Common Password (#{i}) ⚠️⚠️')
             return
         if user_password == '':
             print('Type something...')
