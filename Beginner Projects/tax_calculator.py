@@ -48,7 +48,7 @@ class Tax_Calculator:
 
 
     def run(self):
-        self.window.mainloop()
+        self.window.mainloop() # Runs the calculator
 
 
 if __name__ == '__main__':
