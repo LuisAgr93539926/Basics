@@ -1,0 +1,10 @@
+# IDE/Editor files
+.vscode/
+.idea/
+*.pyc
+
+# Dependency directories
+node_modules/
+
+# Python virtual environment
+venv/
