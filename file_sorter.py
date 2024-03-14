@@ -1,10 +1,13 @@
 import os
 import shutil
+from tkinter import filedialog
 
 
 def create_folder(path: str, extension: str) -> str:
     """Create folder based on the file extension"""
-    folder_name: str = extension[1:]  # returns the extension without the dot (e.g., .png -> png)
+    folder_name: str = extension[
+        1:
+    ]  # returns the extension without the dot (e.g., .png -> png)
     folder_path: str = os.path.join(path, folder_name)
 
     if not os.path.exists(folder_path):
@@ -29,17 +32,16 @@ def sort_files(source_path: str):
 def delete_empty_folders(path: str):
     for root_dir, sub_dir, filenames in os.walk(path, topdown=False):
         for directory in sub_dir:
-            directory_path = os.path.join(path,directory)
+            directory_path = os.path.join(path, directory)
             if not os.listdir(directory_path):
                 os.removedirs(directory_path)
 
 
-if __name__ == '__main__':
-    source_path: str = input('Please provide a file path to sort ->')\
-
+if __name__ == "__main__":
+    source_path: str = filedialog.askdirectory()
     if os.path.exists(source_path):
         sort_files(source_path)
         delete_empty_folders(source_path)
-        print('Files sorted by extension!')
+        print("Files sorted by extension!")
     else:
-        print('Invalid path')
+        print("Invalid path")
