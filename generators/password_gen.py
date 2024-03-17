@@ -25,7 +25,7 @@ def generate_password(length: int, symbols: bool, upper_case: False):
         combination += string.ascii_uppercase
 
     while True:
-        password: str = ''
+        password: str = ""
         for _ in range(length):
             password += combination[secrets.randbelow(len(combination))]
 
@@ -37,11 +37,23 @@ def generate_password(length: int, symbols: bool, upper_case: False):
             return password
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     for i in range(1, 6):
-        new_password = generate_password(3, True, True)
-        # new_password = generate_password(3, False, False)
-        # new_password = "arsi,otn"
-        description: str = (f'length: {len(new_password)}, has_symbols: {has_symbols(new_password)}, '
-                            f'upper_casing: {has_upper(new_password)}')
-        print(f'{i} -> {new_password} | {description}')
+        length = input("Enter the length of the password: ")
+        symbols = input("Do you want symbols in your password? (y/n): ")
+        upper_case = input("Do you want upper case in your password? (y/n): ")
+        if symbols == "y":
+            symbols = True
+        else:
+            symbols = False
+        if upper_case == "y":
+            upper_case = True
+        else:
+            upper_case = False
+        new_password = generate_password(int(length), symbols, upper_case)
+        
+        description: str = (
+            f"length: {len(new_password)}, has_symbols: {has_symbols(new_password)}, "
+            f"upper_casing: {has_upper(new_password)}"
+        )
+        print(f"{i} -> {new_password} | {description}")
